@@ -1,0 +1,4 @@
+git pull ------ actualiza mi repositorio
+git add prueva.md
+
+git README.md
