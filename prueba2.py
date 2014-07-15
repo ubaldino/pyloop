@@ -12,7 +12,7 @@ if sys.argv[1] == "off":
 """
 
 while( True ):
-  ser.write( 'a' )
-  time.sleep( .5 )
-  ser.write( 'b' )
-  time.sleep( .5 )
+    ser.write( 'a' )
+    time.sleep( .5 )
+    ser.write( 'b' )
+    time.sleep( .5 )
