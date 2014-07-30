@@ -1,0 +1,96 @@
+/*libreria hid_bootloader permite que se haga un remapeo de la memotia del pic*/
+
+
+#include <18f4550.h>                 //Incluimos la libreria del Pic 18F4550
+#fuses HSPLL,NOWDT,NOPROTECT,NOLVP,NODEBUG,USBDIV,PLL5,CPUDIV1  //Palabra de configuracion para osc de 20Mhz
+#use delay(clock=48000000)        //Frecuencia de trabajo
+#use fast_io(B)   
+
+#define LOADER_SIZE                 (0x0FFF)
+#define LOADER_START                (0)
+#define LOADER_END                  (LOADER_SIZE)
+#define APPLICATION_START           (LOADER_SIZE+1)
+#define APPLICATION_END             (getenv("PROGRAM_MEMORY")-1)
+#define APPLICATION_ISR             (APPLICATION_START+8)
+
+#build (reset=APPLICATION_START,interrupt=APPLICATION_iSR)
+#org LOADER_START,LOADER_SIZE {}
+#define RB0 PIN_B0
+#define RB1 PIN_B1
+#define RB2 PIN_B2
+#define RB3 PIN_B3
+#define RB4 PIN_B4
+#define RB5 PIN_B5
+#define RB6 PIN_B6
+#define RB7 PIN_B7
+
+
+#define RD0 PIN_D0
+#define RD1 PIN_D1
+#define RD2 PIN_D2
+#define RD3 PIN_D3
+#define RD4 PIN_D4
+#define RD5 PIN_D5
+#define RD6 PIN_D6
+#define RD7 PIN_D7
+
+#define A0 PIN_A0
+#define A1 PIN_A1
+#define A2 PIN_A2
+#define A3 PIN_A3
+#define A4 PIN_A5
+#define A5 PIN_E0
+#define A6 PIN_E1
+#define A7 PIN_E2
+
+#define RC0 PIN_C0
+#define RC1 PIN_C1
+#define RC2 PIN_C2
+
+#define RA4 PIN_RA4
+
+ 
+#byte  TRISA =   0XF92   
+#byte  TRISB =   0XF93
+#byte  TRISC =   0XF94
+#byte  TRISD =   0XF95    
+#byte  TRISE =   0XF96
+
+#byte  LATA  =  0XF89   
+#byte  LATB  =  0XF8A
+#byte  LATC  =  0XF8B
+#byte  LATD  =  0XF8C    
+#byte  LATE  =  0XF8D
+
+#byte  PORTA =   0XF80   
+#byte  PORTB =   0XF81
+#byte  PORTC =   0XF82
+#byte  PORTD =   0XF83    
+#byte  PORTE =   0XF84
+  
+
+
+#define SALIDA    0
+#define ENTRADA   1
+
+void pinMode(long pin, int1 __estado){
+   
+   if(__estado)
+      output_high(Pin + 144);
+   else
+      output_low(Pin + 144);         
+}
+#define HIGH 1
+#define Low  0
+void digitalWrite(long Pin,int1 estado){
+   if(estado)
+      output_high(Pin);
+   else   
+      output_low(Pin);
+}
+
+
+
+
+
+

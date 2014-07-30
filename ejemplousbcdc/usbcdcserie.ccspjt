@@ -1,0 +1,22 @@
+[PROJECT]
+Target=usbcdcserie.hex
+Processor_Text=PIC18F4550
+CCSVersion=5.008
+Compiler=PCH
+[Target Data]
+FileList=usbcdcserie.c
+[Directories]
+Include=C:\Program Files\PICC\Examples\;C:\Program Files\PICC\Drivers\;C:\Program Files\PICC\Devices\;C:\Users\sawers\Desktop\prueba\ejemplousbcdc\;D:\tony\SAWERS\ejemplousbcdc\
+[usbcdcserie.c]
+Type=4
+[mru-list]
+1=usbcdcserie.c
+[Opened Files]
+1=usbcdcserie.c
+2=usb_cdc_taskc.c
+3=
+4=C:\Program Files\PICC\Devices\18f4550.h
+5=
+[Units]
+Count=1
+1=usbcdcserie (main)
