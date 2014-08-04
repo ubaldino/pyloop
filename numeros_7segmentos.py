@@ -4,7 +4,7 @@
 import wx
 import serial,sys
 
-ser = serial.Serial( port="COM14" , baudrate=9600 )
+ser = serial.Serial( port="COM19" , baudrate=9600 )
 
 class LeftPanel(wx.Panel):
 	def __init__(self, parent, id):
@@ -15,12 +15,12 @@ class LeftPanel(wx.Panel):
 		button1 = wx.Button(self, -1, '+', (10, 10))
 		button2 = wx.Button(self, -1, '-', (10, 60), size=(50,30))
 		
-		self.Bind(wx.EVT_BUTTON, self.OnPlus, id=button1.GetId())
-		self.Bind(wx.EVT_BUTTON, self.OnMinus, id=button2.GetId())
+		self.Bind( wx.EVT_BUTTON, self.OnPlus, id=button1.GetId() )
+		self.Bind( wx.EVT_BUTTON, self.OnMinus, id=button2.GetId() )
 	
 	def OnPlus(self, event):
-		value = int(self.text.GetLabel())
-		if (value < 9):
+		value = int( self.text.GetLabel() )
+		if ( value < 9 ):
 			value = value + 1
 		else:
 			value = 0
